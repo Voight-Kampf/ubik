@@ -10,3 +10,7 @@
 	path = kexts/Shiki
 	url = git@github.com:vit9696/Shiki.git
 	branch = master
+[submodule "kexts/CoreDisplayFixup"]
+	path = kexts/CoreDisplayFixup
+	url = git@github.com:PMheart/CoreDisplayFixup.git
+	branch = master
