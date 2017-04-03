@@ -26,3 +26,11 @@
 	path = scripts/intelGraphicsFixup
 	url = git@github.com:Voight-Kampf/intelGraphicsFixup.git
 	branch = master
+[submodule "kexts/intelGraphicsFixup"]
+	path = kexts/intelGraphicsFixup
+	url = git@github.com:Voight-Kampf/intelGraphicsFixup.git
+	branch = master
+[submodule "kexts/NvidiaGraphicsFixup"]
+	path = kexts/NvidiaGraphicsFixup
+	url = git@github.com:Voight-Kampf/NvidiaGraphicsFixup.git
+	branch = master
