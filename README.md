@@ -12,7 +12,15 @@ AppleALC.kext for audio
 Shiki.kext and iMac.kext for playable iTunes movies
 
 
+With version 1.9 of Git and later, you can even download the submodules simultaneously:
+```
+git clone --recursive -j8 git@github.com:Voight-Kampf/ubik.git
+```
 
+For already cloned repos, or older Git versions, just use:
+```
+git submodule update --init --recursive
+```
 
 ```
 iMac17,1: 'Mac-B809C3757DA9BB8D'
