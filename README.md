@@ -45,6 +45,22 @@ iMac17,1 (Retina 5K, 27-inch, Late 2015) / Core i7 4.0GHz
 [14] 0x19260004 - Intel® Iris™ Graphics 540.......(ULT GT3)
 [15] 0x193b0005 - Intel® Iris™ Pro Graphics 580...(Halo GT4)
 [16] 0x193b0006 - Intel® Iris™ Pro Graphics 580...(Halo GT4)
+
+
+
+[ 1] : 0x191e0000 – Skylake ULX GT2
+[ 2] : 0x19160000 – Skylake ULT GT2
+[ 3] : 0x19260000 – Skylake ULT GT3
+[ 4] : 0x191b0000 – Skylake HALO GT2
+[ 5] : 0x19120000 – Skylake Desktop GT2
+[ 6] : 0x19020001 – Skylake Desktop GT1 (currently inactive)
+[ 7] : 0x19170001 – Skylake Desktop GT1.5 (currently inactive)
+[ 8] : 0x19120001 – Skylake Desktop GT2 (currently inactive)
+[ 9] : 0x19320001 – Skylake Desktop GT4 (currently inactive)
+[10] : 0x19160002 – Skylake ULT GT2
+[11] : 0x19260002 – Skylake ULT GT3
+[12] : 0x191e0003 – Skylake ULX GT2
+
 ```
 
 
