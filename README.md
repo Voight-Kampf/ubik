@@ -3,7 +3,7 @@
 
 required kext sources and makefile for my hmac
 
-minimal kext requirement:
+### minimal kext requirement:
 
 Lilu.kext
 NvidiaGraphicsFixup.kext for GPU
