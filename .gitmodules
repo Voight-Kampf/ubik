@@ -14,3 +14,7 @@
 	path = kexts/CoreDisplayFixup
 	url = git@github.com:PMheart/CoreDisplayFixup.git
 	branch = master
+[submodule "scripts/RebuildCaches"]
+	path = scripts/RebuildCaches
+	url = git@github.com:Voight-Kampf/RebuildCaches.git
+	branch = master
