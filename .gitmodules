@@ -18,3 +18,11 @@
 	path = scripts/RebuildCaches
 	url = git@github.com:Voight-Kampf/RebuildCaches.git
 	branch = master
+[submodule "scripts/NvidiaGraphicsFixup"]
+	path = scripts/NvidiaGraphicsFixup
+	url = git@github.com:Voight-Kampf/NvidiaGraphicsFixup.git
+	branch = master
+[submodule "scripts/intelGraphicsFixup"]
+	path = scripts/intelGraphicsFixup
+	url = git@github.com:Voight-Kampf/intelGraphicsFixup.git
+	branch = master
