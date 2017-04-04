@@ -26,3 +26,7 @@
 	path = kexts/NvidiaGraphicsFixup
 	url = git@github.com:Voight-Kampf/NvidiaGraphicsFixup.git
 	branch = master
+[submodule "kexts/OS-X-Fake-PCI-ID"]
+	path = kexts/OS-X-Fake-PCI-ID
+	url = git@github.com:Voight-Kampf/OS-X-Fake-PCI-ID.git
+	branch = master
