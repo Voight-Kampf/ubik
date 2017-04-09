@@ -12,7 +12,7 @@
  *     Length           0x000000BA (186)
  *     Revision         0x01
  *     Checksum         0x54
- *     OEM ID           "shiloh"
+ *     OEM ID           "APPLE"
  *     OEM Table ID     "GFX1"
  *     OEM Revision     0x00001000 (4096)
  *     Compiler ID      "INTL"
@@ -45,7 +45,7 @@ _SB.PCI0.PEG0
             }
 */
 
-DefinitionBlock ("", "SSDT", 1, "shiloh", "GFX1", 0x00001000)
+DefinitionBlock ("", "SSDT", 1, "APPLE", "GFX1", 0x00001000)
 {
     Device (\_SB.PCI0.PEG0.GFX1)
     {
