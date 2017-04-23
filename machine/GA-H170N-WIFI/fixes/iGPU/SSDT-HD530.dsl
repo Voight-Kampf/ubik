@@ -1,5 +1,12 @@
-// from piker
-
+/*
+ *
+ *
+ * AAPL properties for Skylake Graphics (fixing graphic glitches)
+ * https://pikeralpha.wordpress.com/2016/10/30/aapl-properties-for-skylake-graphics/
+ *
+ * 2017 -- GA-H170N-WIFI
+ *
+ */
 DefinitionBlock ("ssdt.aml", "SSDT", 2, "APPLE ", "igpu", 0x00001000)
 {
     External (_SB_.PCI0, DeviceObj)
