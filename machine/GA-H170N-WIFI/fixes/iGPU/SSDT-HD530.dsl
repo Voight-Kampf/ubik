@@ -4,6 +4,10 @@
  * AAPL properties for Skylake Graphics (fixing graphic glitches)
  * https://pikeralpha.wordpress.com/2016/10/30/aapl-properties-for-skylake-graphics/
  *
+ * using this with clover:
+ *         – inject Intel: enabled
+ *         – ig-platform-id: 0x19120000
+ *
  * 2017 -- GA-H170N-WIFI
  *
  */
