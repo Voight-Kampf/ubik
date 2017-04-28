@@ -21,17 +21,91 @@
  * You can only add new devices and methods. You cannot override existing devices and/or methods!
 
  */
+
+// https://github.com/Bumblebee-Project/Bumblebee/wiki/ACPI-for-Developers
+
+
+/*
+
+    MethodObj
+    UnknownObj
+    IntObj
+    DeviceObj
+    PkgObj
+    
+*/
+
+// order
+// PSM
+//
+// _SB
+//     PCIO
+//			PEG0
+//			PEG1
+//			PEG2
+//			LPCB
+//				PS2K // ps 2 keyboard
+//
+// GPE
+// _PTS
+// _WAK
+// _PR
+
+// todo
+/*
+Device PS2K (PS2 Keyboard)
+Device PS2M (PS2 Mouse)
+Device SPKR (Speaker)
+Device FDC (Floppy Disk Controller)
+
+    External (_SB_.PCI0.HDAS.PPMS, MethodObj)    // 1 Arguments (from opcode)
+    External (_SB_.PCI0.HDAS.PS0X, MethodObj)    // 0 Arguments (from opcode)
+    External (_SB_.PCI0.HDAS.PS3X, MethodObj)    // 0 Arguments (from opcode)
+    
+    
+*/
+
 DefinitionBlock ("ssdt.aml", "SSDT", 1, "APPLE ", "general", 0x00001000)
 {
 
+
+    // external
+
+    // PCIO
+    External (\_SB.PCI0, DeviceObj)
+
+    // USB
+    External (\UMAP, IntObj)
+
+    // GFX0 / GPU
+    External (PEG0, DeviceObj)
+    External (PEGP, DeviceObj)
+
+
+    External (\_SB.PCI0.LPCB, DeviceObj)
+
+    // PS2K and PS2M
+    External (\_SB.PCI0.LPCB.PS2K, DeviceObj)
+    External (\_SB.PCI0.LPCB.PS2M, DeviceObj)
+    // External (\_SB.PCI0.LPCB, DeviceObj)
+
+    // _PTS
+    External (\_SB.TPM.TPTS, MethodObj)                 // 1 Arguments
+    External (\_SB.PCI0.LPCB.SIO1.SIOS, MethodObj)      // 1 Arguments
+    External (\_SB.PCI0.LPCB.SPTS, MethodObj)           // 1 Arguments
+    External (\_SB.PCI0.NPTS, MethodObj)                // 1 Arguments
+    External (RPTS, MethodObj)                          // 1 Arguments
+
+    // AUDIO
+    External (_SB_.PCI0.HDAS._ADR, UnknownObj) // ?
 
     /*
      *
      * root
      *
      */
-	Scope (\)
-	{
+    Scope (\)
+    {
         
 
 
@@ -41,9 +115,8 @@ DefinitionBlock ("ssdt.aml", "SSDT", 1, "APPLE ", "general", 0x00001000)
          * System Bus tree
          *
          */
-	    Scope (\_SB)                            // Changing the scope to the System Bus tree.
-	    {
-
+        Scope (\_SB)                            // Changing the scope to the System Bus tree.
+        {
 
 
 
@@ -51,12 +124,16 @@ DefinitionBlock ("ssdt.aml", "SSDT", 1, "APPLE ", "general", 0x00001000)
             // Simple Skylake USB Fix (no kexts required)  
             // https://pikeralpha.wordpress.com/2016/07/13/simple-skylake-usb-fix-no-kexts-required/
 
-            External (\UMAP, IntObj)
+            // External (\UMAP, IntObj)
 
-            Store ("Method \\_SB._INI Called", Debug)
-            Store (0xf2ff, \UMAP)
+            Method (_INI, 0, NotSerialized)  // _INI: Initialize
+            {
+                Store ("Method \\_SB._INI Called", Debug)
+                Store (0xf2ff, \UMAP)
+            }
+            // Store ("Method \\_SB._INI Called", Debug)
+            // Store (0xf2ff, \UMAP)
             // end usb fix
-
 
 
 
@@ -65,10 +142,11 @@ DefinitionBlock ("ssdt.aml", "SSDT", 1, "APPLE ", "general", 0x00001000)
              * PCI0
              *
              */
-	        External (\_SB.PCI0, DeviceObj)
+            // External (\_SB.PCI0, DeviceObj)
 
-	        Scope (PCI0)						            // And over to device PCI0.
-	        {
+            Scope (PCI0)                                    // And over to device PCI0.
+            {
+
 
 
                 /*
@@ -76,17 +154,17 @@ DefinitionBlock ("ssdt.aml", "SSDT", 1, "APPLE ", "general", 0x00001000)
                  * NVIDIA GPU injection
                  *
                  */
-	            External (PEG0, DeviceObj)
+                // External (PEG0, DeviceObj)
 
-	            Scope (PEG0)
-	            {
+                Scope (PEG0)
+                {
 
-	                Device (GFX1)				             // Giving our GPU device a name. 
-	                {
-	                    Name (_SUN, One)		             // A simple cosmetic only change. // _SUN: Slot User Number
-	                    Name (_ADR, Zero)                  // _ADR: Address
+                    Device (GFX1)                           // Giving our GPU device a name. 
+                    {
+                        Name (_SUN, One)                    // A simple cosmetic only change. // _SUN: Slot User Number
+                        Name (_ADR, Zero)                   // _ADR: Address
 
-                        Method (_DSM, 4, NotSerialized)    // _DSM: Device-Specific Method
+                        Method (_DSM, 4, NotSerialized)     // _DSM: Device-Specific Method
                         {
                             If (LEqual (Arg2, Zero))
                             {
@@ -106,10 +184,10 @@ DefinitionBlock ("ssdt.aml", "SSDT", 1, "APPLE ", "general", 0x00001000)
                         }
                     }
 
-	                Device (HDAU)				// Base for High Definition Audio link. 
-	                {
-	                    Name (_ADR, One)  // _ADR: Address
-                        Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
+                    Device (HDAU)                           // Base for High Definition Audio link. 
+                    {
+                        Name (_ADR, One)                    // _ADR: Address
+                        Method (_DSM, 4, NotSerialized)     // _DSM: Device-Specific Method
                         {
                             If (LEqual (Arg2, Zero))
                             {
@@ -127,40 +205,81 @@ DefinitionBlock ("ssdt.aml", "SSDT", 1, "APPLE ", "general", 0x00001000)
                                 }
                             })
                         }
-	                }
+                    }
 
                     //
-	                External (PEGP, DeviceObj)	// Creating a path to the factory EC0 in the namespace
+                    // External (PEGP, DeviceObj)              // Creating a path to the factory EC0 in the namespace
 
-	                Scope (PEGP)
-	                {
-	                    Name (_STA, Zero)		// Removing factory EC0 device
-	                }
+                    Scope (PEGP)
+                    {
+                        Name (_STA, Zero)                   // Removing factory EC0 device
+                    }
                     //
 
                     // Name (PEGP._STA, Zero)
                     // end NVIDIA GPU inject
 
-	            } // PEG0
+                } // PEG0
 
 
-	        
+
+                // deleting PS2 Kwyboard and Mouse
+                // External (\_SB.PCI0.LPCB, DeviceObj)
+                Scope (LPCB)
+                {
+                    // PS2K
+                    Scope (PS2K)
+                    {
+                        Name (_STA, Zero)
+                    }
+
+                    // PS2M
+                    Scope (PS2M)
+                    {
+                        Name (_STA, Zero)
+                    }
+
+                }
+
+
+				/*
+				https://www.tonymacx86.com/threads/modify-dsdt-for-lpcb-ionamematch.210070/
+ Scope (_SB_.PCI0.LPCB)
+    {
+        Method (_DSM, 4, NotSerialized)
+        {
+            If (!Arg2)
+            {
+                Return ( Buffer() { 0x03 } )
+            }
+
+            Return ( Package () { "compatible", "pci8086,1d41" } ) // <-- Or whatever ID you want
+        }
+    }
+				*/
+				
+
+
+
+
             /*
              *
              * AUDO hdef
-             *
+             * https://github.com/toleda/audio_ALCInjection
              */
-            External (\_SB_.PCI0, DeviceObj)    // Warning: Unknown object
-            External (\_SB_.PCI0.HDAS._ADR, UnknownObj)    // Warning: Unknown object
-    
+            // External (\_SB_.PCI0, DeviceObj)                // Warning: Unknown object
+            // External (\_SB_.PCI0.HDAS._ADR, UnknownObj)     // Warning: Unknown object
+
+            Name (HDAS._STA, Zero)  // _STA: Status
+
             Device (HDEF)
             {
-                Name (_ADR, 0x001F0003)  // _ADR: Address
-                Method (_INI, 0, NotSerialized)  // _INI: Initialize
+                Name (_ADR, 0x001F0003)                     // _ADR: Address
+                Method (_INI, 0, NotSerialized)             // _INI: Initialize
                 {
                     Store (Zero, \_SB.PCI0.HDAS._ADR)
                 }
-                Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake
+                Method (_PRW, 0, NotSerialized)             // _PRW: Power Resources for Wake
                 {
                     Return (Package (0x02)
                     {
@@ -168,13 +287,13 @@ DefinitionBlock ("ssdt.aml", "SSDT", 1, "APPLE ", "general", 0x00001000)
                         0x05
                     })
                 }
-                Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
+                Method (_DSM, 4, NotSerialized)             // _DSM: Device-Specific Method
                 {
                     If (LEqual (Arg2, Zero))
                     {
                         Return (Buffer (One)
                         {
-                             0x03                                           
+                             0x03
                         })
                     }
                     Return (Package (0x0C)
@@ -187,7 +306,7 @@ DefinitionBlock ("ssdt.aml", "SSDT", 1, "APPLE ", "general", 0x00001000)
                         "layout-id", 
                         Buffer (0x04)
                         {
-                             0x01, 0x00, 0x00, 0x00 // layout id 1
+                             0x01, 0x00, 0x00, 0x00         // layout id 1
                         }, 
                         "device_type", 
                         Buffer (0x11)
@@ -197,7 +316,7 @@ DefinitionBlock ("ssdt.aml", "SSDT", 1, "APPLE ", "general", 0x00001000)
                         "built-in", 
                         Buffer (One)
                         {
-                             0x00                                           
+                             0x00
                         }, 
                         "PinConfigurations", 
                         Buffer (Zero) {}, 
@@ -216,18 +335,21 @@ DefinitionBlock ("ssdt.aml", "SSDT", 1, "APPLE ", "general", 0x00001000)
 
 
 
-	        } // PCI0
+            } // PCI0
 
 
 
 
 
-	    } // \_SB
+        } // \_SB
 
 
+        /////////
+//    Scope (_SB.PCI0.LPCB.PS2K)
+  //  {
 
-
-
+    //}
+        /////////
 
 
 
@@ -238,14 +360,13 @@ DefinitionBlock ("ssdt.aml", "SSDT", 1, "APPLE ", "general", 0x00001000)
         Some DSDT tables already contain such a condition and it is advised to turn the fix off in this case.
         */
         // sleep shutdown fix
-        External (\_SB.TPM.TPTS, MethodObj) // 1 Arguments
-        External (\_SB.PCI0.LPCB.SIO1.SIOS, MethodObj) // 1 Arguments
-        External (\_SB.PCI0.LPCB.SPTS, MethodObj) // 1 Arguments
-        External (\_SB.PCI0.NPTS, MethodObj) // 1 Arguments
-        External (RPTS, MethodObj) // 1 Arguments
+        // External (\_SB.TPM.TPTS, MethodObj)                 // 1 Arguments
+        // External (\_SB.PCI0.LPCB.SIO1.SIOS, MethodObj)      // 1 Arguments
+        // External (\_SB.PCI0.LPCB.SPTS, MethodObj)           // 1 Arguments
+        // External (\_SB.PCI0.NPTS, MethodObj)                // 1 Arguments
+        // External (RPTS, MethodObj)                          // 1 Arguments
 
-        // fix_shutdown
-        Method (_PTS, 1, NotSerialized)  // _PTS: Prepare To Sleep
+        Method (_PTS, 1, NotSerialized)                     // _PTS: Prepare To Sleep
         {
             If (LEqual (Arg0, 0x05))
             {
@@ -265,10 +386,7 @@ DefinitionBlock ("ssdt.aml", "SSDT", 1, "APPLE ", "general", 0x00001000)
 
 
 
-
-
-
-	}
+    }
     // end scope root
 
 
