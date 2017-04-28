@@ -65,6 +65,8 @@ Device FDC (Floppy Disk Controller)
     
 */
 
+// todo -- get audio to work
+
 DefinitionBlock ("ssdt.aml", "SSDT", 1, "APPLE ", "general", 0x00001000)
 {
 
@@ -97,7 +99,7 @@ DefinitionBlock ("ssdt.aml", "SSDT", 1, "APPLE ", "general", 0x00001000)
     External (RPTS, MethodObj)                          // 1 Arguments
 
     // AUDIO
-    External (_SB_.PCI0.HDAS._ADR, UnknownObj) // ?
+    External (_SB_.PCI0.HDAS._ADR, UnknownObj) // _SB_ ?
 
     /*
      *
@@ -264,7 +266,7 @@ DefinitionBlock ("ssdt.aml", "SSDT", 1, "APPLE ", "general", 0x00001000)
 
             /*
              *
-             * AUDO hdef
+             * AUDO hdef / This does not work yet
              * https://github.com/toleda/audio_ALCInjection
              */
             // External (\_SB_.PCI0, DeviceObj)                // Warning: Unknown object
