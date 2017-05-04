@@ -72,5 +72,9 @@ iMac17,1 (Retina 5K, 27-inch, Late 2015) / Core i7 4.0GHz
 ```
 
 
+// notes for skylake dsdt and ssdt fixes
+UPDATES: As of 10.11.4, Skylake HD 530 graphics are now working with full acceleration and the APIC Fix is not necessary. Skylake is now the current platform recommendation.
+https://www.tonymacx86.com/threads/testing-thread-skylake-platform-in-os-x.176407/
+
 
 
