@@ -18,3 +18,12 @@
 	path = kexts/OS-X-Fake-PCI-ID
 	url = git@github.com:Voight-Kampf/OS-X-Fake-PCI-ID.git
 	branch = master
+[submodule "kexts/AppleALC"]
+	path = kexts/AppleALC
+	url = git@github.com:vit9696/AppleALC.git
+[submodule "kexts/Lilu"]
+	path = kexts/Lilu
+	url = git@github.com:vit9696/Lilu.git
+[submodule "kexts/Shiki"]
+	path = kexts/Shiki
+	url = git@github.com:vit9696/Shiki.git
