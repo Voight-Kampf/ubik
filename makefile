@@ -38,7 +38,7 @@ pack :
 	cp -r ${NVIDIAFIXKEXT} build/
 	cp -r ${APPLEALCKEXT} build/
 	
-	# cp -r ${IGPFIXKEXT} build/
+		# cp -r ${IGPFIXKEXT} build/
 	
 	cp -r ${SHIKIKEXT} build/
 	cp -r ${IMAC} build/
@@ -94,14 +94,14 @@ clean :
 #https://www.idelta.info/archives/some-hidden-changes-in-os-x-el-capitan/
 
 # disable hibernation
-sudo pmset hibernatemode 0
+# sudo pmset hibernatemode 0
 
 # clear the image file
-sudo rm -rf /var/vm/sleepimage
+# sudo rm -rf /var/vm/sleepimage
 
 # inhibit file recreation
-sudo touch /private/var/vm/sleepimage
-sudo chflags uchg /private/var/vm/sleepimage
+# sudo touch /private/var/vm/sleepimage
+# sudo chflags uchg /private/var/vm/sleepimage
 
 
 
@@ -109,9 +109,9 @@ sudo chflags uchg /private/var/vm/sleepimage
 # reference: https://www.macissues.com/2015/05/08/how-to-fix-your-mac-not-waking-from-sleep/
 
 # Apple’s main standby mode option
-sudo pmset standby 0
+# sudo pmset standby 0
 # implementation required for European energy regulations
-sudo pmset autopoweroff 0
+# sudo pmset autopoweroff 0
 
 
 
