@@ -2,3 +2,15 @@
 	path = scripts/RebuildCaches
 	url = git@github.com:Voight-Kampf/RebuildCaches.git
 	branch = master
+[submodule "kexts/Lilu"]
+	path = kexts/Lilu
+	url = git@github.com:vit9696/Lilu.git
+[submodule "kexts/AppleALC"]
+	path = kexts/AppleALC
+	url = git@github.com:vit9696/AppleALC.git
+[submodule "kexts/Shiki"]
+	path = kexts/Shiki
+	url = git@github.com:vit9696/Shiki.git
+[submodule "kexts/LiluFriend"]
+	path = kexts/LiluFriend
+	url = git@github.com:PMheart/LiluFriend.git
