@@ -79,3 +79,20 @@ https://www.tonymacx86.com/threads/testing-thread-skylake-platform-in-os-x.17640
 
 darkwake 
 https://www.tonymacx86.com/threads/important-darkwake-0-flag-can-break-auto-sleep-in-10-8-1.69714/#post447117
+
+```
+// gDarkWakeFlags
+enum {
+    kDarkWakeFlagHIDTickleEarly      = 0x01, // hid tickle before gfx suppression
+    kDarkWakeFlagHIDTickleLate       = 0x02, // hid tickle after gfx suppression
+    kDarkWakeFlagHIDTickleNone       = 0x03, // hid tickle is not posted
+    kDarkWakeFlagHIDTickleMask       = 0x03,
+    kDarkWakeFlagIgnoreDiskIOInDark  = 0x04, // ignore disk idle in DW
+    kDarkWakeFlagIgnoreDiskIOAlways  = 0x08, // always ignore disk idle
+    kDarkWakeFlagIgnoreDiskIOMask    = 0x0C,
+    kDarkWakeFlagAlarmIsDark         = 0x0100
+};
+
+static uint32_t         gDarkWakeFlags = kDarkWakeFlagHIDTickleNone;
+```
+
