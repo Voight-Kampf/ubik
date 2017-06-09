@@ -96,3 +96,4 @@ enum {
 static uint32_t         gDarkWakeFlags = kDarkWakeFlagHIDTickleNone;
 ```
 
+pmset -g assertions
