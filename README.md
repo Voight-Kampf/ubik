@@ -77,4 +77,5 @@ UPDATES: As of 10.11.4, Skylake HD 530 graphics are now working with full accele
 https://www.tonymacx86.com/threads/testing-thread-skylake-platform-in-os-x.176407/
 
 
-
+darkwake 
+https://www.tonymacx86.com/threads/important-darkwake-0-flag-can-break-auto-sleep-in-10-8-1.69714/#post447117
