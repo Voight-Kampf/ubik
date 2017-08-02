@@ -97,3 +97,4 @@ static uint32_t         gDarkWakeFlags = kDarkWakeFlagHIDTickleNone;
 ```
 
 pmset -g assertions
+ sysctl -n machdep.xcpm.mode
