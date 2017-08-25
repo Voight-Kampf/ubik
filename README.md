@@ -98,3 +98,22 @@ static uint32_t         gDarkWakeFlags = kDarkWakeFlagHIDTickleNone;
 
 pmset -g assertions
  sysctl -n machdep.xcpm.mode
+
+
+
+```
+csr-active-config                       HEX     N/A     NVRAM     DTRACE     Intern     Debug     PID     FS     Kexts     clover     NVRAM
+
+csrutil enabled    -- no internal       00      0       0         0          0          0         0       0      0         0x00       %00%00%00%00
+csrutil enabled                         10      0       0         0          1          0         0       0      0         0x10       %10%00%00%00
+csrutil enabled    -- withoult kext     11      0       0         0          1          0         0       0      1         0x11       %11%00%00%00
+csrutil enabled    -- withoult fs       12      0       0         0          1          0         0       1      0         0x12       %12%00%00%00
+csrutil enabled    -- withoult debug    14      0       0         0          1          0         1       0      0         0x14       %14%00%00%00
+csrutil enabled    -- withoult dtrace   30      0       0         1          1          0         0       0      0         0x30         0%00%00%00
+csrutil enabled    -- withoult nvram    50      0       1         0          1          0         0       0      0         0x50         P%00%00%00
+csrutil disabled                        77      0       1         1          1          0         1       1      1         0x77         w%00%00%00
+csrutil disabled   -- No Internal       67      0       1         1          0          0         1       1      1         0x67         g%00%00%00
+```
+
+
+
