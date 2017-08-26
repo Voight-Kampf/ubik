@@ -115,5 +115,8 @@ csrutil disabled                        77      0       1         1          1  
 csrutil disabled   -- No Internal       67      0       1         1          0          0         1       1      1         0x67         g%00%00%00
 ```
 
+black screen issue
+boot with: agdp=Mac-00BE6ED71E35EB86
+https://pikeralpha.wordpress.com/2016/10/11/black-screen-tip-of-the-day/
 
 
