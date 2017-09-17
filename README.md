@@ -120,3 +120,19 @@ boot with: agdp=Mac-00BE6ED71E35EB86
 https://pikeralpha.wordpress.com/2016/10/11/black-screen-tip-of-the-day/
 
 
+high sierra
+
+In my experience, most OSInstall.mpkg damaged/missing errors occur on hacks with NVRAM emulation ie
+ 
+UEFI systems with non functioning hardware NVRAM ---> use EmuVariableUefi-64 and with Clover rc scripts, generate NVRAM.plist file(s) on disk
+Legacy BIOS systems use Clover rc scripts to generate NVRAM.plist file(s) on disk
+ 
+Fix is therefore to delete EmuVariableUefi-64 (UEFI systems) or delete NVRAM.plist files from all EFI partitions, incl USB installer (for legacy BIOS systems).  I also run the terminal command sudo NVRAM -c to reset my NVRAM before installing/upgrading High Sierra on my legacy systems.
+ 
+If you have incorrect or old FF/FFM values in your SMBIOS/config.plist, these cause the "error while verifying firmware" message.
+ 
+The system will record the unsuccessful firmware update so that if you try to boot again to "Boot macOS Install", you'll also get a OSInstall.mpkg is damaged/missing error the second time.
+ 
+The fix is to update to Clover r4182 and boot into the High Sierra partition again (in its un-updated state).  This automatically deletes the "tainted" /macOS\ Install\ Data folder, and then re-run the "Install macOS High Sierra Beta.app" to generate a fresh macOS Install Data folder ---> reboot.
+ 
+Hope that clarifies :)
