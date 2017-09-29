@@ -137,14 +137,16 @@ The fix is to update to Clover r4182 and boot into the High Sierra partition aga
  
 Hope that clarifies :)
 
-// gDarkWakeFlags
-enum {
-    kDarkWakeFlagHIDTickleEarly      = 0x01, // hid tickle before gfx suppression
-    kDarkWakeFlagHIDTickleLate       = 0x02, // hid tickle after gfx suppression
-    kDarkWakeFlagHIDTickleNone       = 0x03, // hid tickle is not posted
-    kDarkWakeFlagHIDTickleMask       = 0x03,
-    kDarkWakeFlagIgnoreDiskIOInDark  = 0x04, // ignore disk idle in DW
-    kDarkWakeFlagIgnoreDiskIOAlways  = 0x08, // always ignore disk idle
-    kDarkWakeFlagIgnoreDiskIOMask    = 0x0C,
-    kDarkWakeFlagAlarmIsDark         = 0x0100
-};
+
+
+
+sleep issues
+
+Check for current setting
+```
+pmset -g live
+```
+
+
+
+
