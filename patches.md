@@ -1,6 +1,6 @@
 
 ```
-workingon high sierra:
+working on high sierra and smbios iMac18,3:
 Name: com.apple.driver.AppleGraphicsDevicePolicy
 Comment: Disable board-id check to prevent no signal (c) lvs1974, Pike R. Alpha, vit9696, modifications by PMheart
 Find: BA05000000
