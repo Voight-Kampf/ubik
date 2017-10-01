@@ -8,22 +8,22 @@ Replace: 33D2909090
 MatchOS: 10.9.3,10.9.4,10.9.5,10.10.x,10.11.x,10.12.x,10.13.x
 ```
 ```
-			<dict>
-				<key>Comment</key>
-				<string>Disable board-id check to prevent no signal (c) lvs1974, Pike R. Alpha, vit9696, modifications by PMheart</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				ugUAAAA=
-				</data>
-				<key>Name</key>
-				<string>AppleGraphicsDevicePolicy</string>
-				<key>Replace</key>
-				<data>
-				M9KQkJA=
-				</data>
-			</dict>
+<dict>
+	<key>Comment</key>
+	<string>Disable board-id check to prevent no signal (c) lvs1974, Pike R. Alpha, vit9696, modifications by PMheart</string>
+	<key>Disabled</key>
+	<false/>
+	<key>Find</key>
+	<data>
+	ugUAAAA=
+	</data>
+	<key>Name</key>
+	<string>AppleGraphicsDevicePolicy</string>
+	<key>Replace</key>
+	<data>
+	M9KQkJA=
+	</data>
+</dict>
 ```
 
 ```
