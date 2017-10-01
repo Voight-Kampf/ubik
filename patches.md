@@ -36,6 +36,30 @@ ba000000 00
 Disable board-id check to prevent no signal © lvs1974, Pike R. Alpha, vit9696
 ```
 
+```
+these are from http://www.macos86.com/t11-config_patch
+Name:  AppleGraphicsDevicePolicy
+Find:       626F6172642D6964
+Replace:  626F6172642D6978
+Comment:AGDP.fix
+
+
+Name:  AppleGraphicsDevicePolicy
+Find:      45444944 00
+Replace:  45444949 00
+Comment:Brumbaer's GDP Patch 1
+
+Name:  AppleGraphicsDevicePolicy
+Find:       756e6c6f 616400
+Replace:  756e6c6f 616500
+Comment:Brumbaer's GDP Patch 2
+
+
+Name:  AppleGraphicsDevicePolicy
+Find:       44656661 756c7400 
+Replace:  6e6f6e65 00000000 
+Comment:Brumbaer's GDP Patch 3
+```
 
 
 
