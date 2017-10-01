@@ -35,3 +35,27 @@ ba000000 00
 
 Disable board-id check to prevent no signal © lvs1974, Pike R. Alpha, vit9696
 ```
+
+
+
+
+broadcom wifi patch
+```
+<dict>
+	<key>Comment</key>
+	<string>AirPortBrcm4360 - fcvo</string>
+	<key>Disabled</key>
+	<false/>
+	<key>Find</key>
+	<data>
+	gflSqgAAdSk=
+	</data>
+	<key>Name</key>
+	<string>AirPortBrcm4360</string>
+	<key>Replace</key>
+	<data>
+	gflSqgAAZpA=
+	</data>
+	</dict>
+<dict>
+```
