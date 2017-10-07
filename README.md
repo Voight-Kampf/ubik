@@ -149,4 +149,7 @@ pmset -g live
 
 
 
-
+ creating installer media
+ ```
+ sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --applicationpath /Applications/Install\ macOS\ High\ Sierra.app  --volume /Volumes/DISKNAME
+```
