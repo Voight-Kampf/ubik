@@ -83,3 +83,17 @@ broadcom wifi patch
 	</dict>
 <dict>
 ```
+
+
+```
+<dict>
+	<key>Comment</key>
+	<string>Enable TRIM for SSD</string>
+	<key>Name</key>
+	<string>com.apple.iokit.IOAHCIBlockStorage</string>
+	<key>Find</key>
+	<data>AEFQUExFIFNTRAA=</data>
+	<key>Replace</key>
+	<data>AAAAAAAAAAAAAAA=</data>
+</dict>
+```
