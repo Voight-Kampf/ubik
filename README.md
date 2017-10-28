@@ -146,8 +146,10 @@ Check for current setting
 ```
 pmset -g live
 ```
-
-
+show log
+```
+ log show --style syslog | grep "Wake reason"
+```
 
  creating installer media
  ```
